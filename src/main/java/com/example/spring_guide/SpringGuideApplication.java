@@ -9,10 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.example.greetings"})
+@ComponentScan(basePackages = {"com.example"})
+@EnableScheduling
 public class SpringGuideApplication {
     private final static String URL = "https://gturnquist-quoters.cfapps.io/api/random";
     private static final Logger log = LoggerFactory.getLogger(SpringGuideApplication.class);
@@ -35,10 +37,9 @@ public class SpringGuideApplication {
 
     private void getQuote(RestTemplate restTemplate) {
         Quote quote = restTemplate.getForObject(URL, Quote.class);
-        if(quote.getType().equals("success")){
+        if (quote.getType().equals("success")) {
             log.info(quote.toString());
-        }
-        else {
+        } else {
             log.error("Problem with getting Quote from: " + URL);
         }
     }
