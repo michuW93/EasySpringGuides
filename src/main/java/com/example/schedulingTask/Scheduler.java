@@ -15,7 +15,6 @@ public class Scheduler {
 
     @Scheduled(fixedRate = 10000)
     public void reportCurrentTime() {
-        System.out.println("time");
         log.info("Scheduler: the time is now {}", dateFormat.format(new Date()));
     }
 }
