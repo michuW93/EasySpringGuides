@@ -13,7 +13,7 @@ public class Scheduler {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private static final Logger log = LoggerFactory.getLogger(Scheduler.class);
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 100000)
     public void reportCurrentTime() {
         log.info("Scheduler: the time is now {}", dateFormat.format(new Date()));
     }
